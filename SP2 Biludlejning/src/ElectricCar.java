@@ -22,7 +22,7 @@ public class ElectricCar  extends  ACar{
     }
 
     public int getRegistrationFee() {
-        int kmPrLitre = Math.round(100 / (getWhPrKm() / 91.25f));
+        int kmPrLitre = Math.round(100 / (getWhPrKm() / 91.25));
         if (kmPrLitre < 5) {
             return 10470;
         } else if (kmPrLitre < 10) {
