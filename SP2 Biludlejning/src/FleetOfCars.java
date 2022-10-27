@@ -9,7 +9,14 @@ public class FleetOfCars {
         fleet.add(car);
     }
 
-    // int getTotalRegistrationFeeForFleet(){}
+    public static int getTotalRegistrationFeeForFleet(){
+        int totalRegistration=0;
+        for(Car car : fleet){
+            totalRegistration+=car.getRegistrationFee();
+        }
+        return totalRegistration;
+
+    }
 
     @Override
     public String toString() {

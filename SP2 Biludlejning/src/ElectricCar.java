@@ -17,24 +17,34 @@ public class ElectricCar  extends  ACar{
         return maxRange;
     }
 
-    int getWhPrKm(){
-        return 0;
+    public int getWhPrKm() {
+        return (getBatteryCapacity() * 1000) / getMaxRange();
     }
 
-    @Override
-    public int getRegistrationFee(){
-        return 0;
+    public int getRegistrationFee() {
+        int kmPrLitre = Math.round(100 / (getWhPrKm() / 91.25f));
+        if (kmPrLitre < 5) {
+            return 10470;
+        } else if (kmPrLitre < 10) {
+            return 5500;
+        } else if (kmPrLitre < 15) {
+            return 2340;
+        } else if (kmPrLitre < 20) {
+            return 1050;
+        } else {
+            return 330;
+        }
     }
 
     @Override
     public String toString() {
-        return "ElectricCar{" +
-                "batteryCapacity=" + batteryCapacity +
-                ", maxRange=" + maxRange +
-                ", registrationNumber='" + registrationNumber + '\'' +
-                ", make='" + make + '\'' +
-                ", model='" + model + '\'' +
-                ", numberOfDoors=" + numberOfDoors +
-                '}';
+        return "ElectricCar |" +
+                "BatteryCapacity = " + batteryCapacity +
+                ", maxRange = " + maxRange +
+                ", registration number = " + registrationNumber + '\'' +
+                ", make = " + make + '\'' +
+                ", model = " + model + '\'' +
+                ", doors = " + numberOfDoors +
+                '|';
     }
 }

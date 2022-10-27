@@ -9,9 +9,9 @@ public class DieselCar extends AFuelCar {
 
     public String hasParticleFilter() {
         if (particleFilter==true){
-            return ("yes");
+            return ("Yes");
         };
-        return ("no");
+        return ("No");
     }
 
     @Override
@@ -21,19 +21,38 @@ public class DieselCar extends AFuelCar {
 
     @Override
     public int getRegistrationFee() {
-        return 0;
+
+        int RegistrationFee = 0;
+
+        if (kmPrLitre >= 15 && kmPrLitre < 20) {
+            RegistrationFee+=2440;
+        }
+        else if (kmPrLitre >= 10 && kmPrLitre < 15) {
+            RegistrationFee+= 4190;
+        }
+        else if (kmPrLitre >= 5 && kmPrLitre < 10) {
+            RegistrationFee+= 8270;
+        }
+        else if (kmPrLitre < 5) {
+            RegistrationFee+= 25730;
+        }
+        if (!particleFilter) {
+            RegistrationFee +=1000;
+        }
+        return RegistrationFee;
     }
+
 
     @Override
     public String toString() {
-        return "DieselCar{" +
-                "particleFilter=" + hasParticleFilter() +
-                ", kmPrLitre=" + kmPrLitre +
-                ", registrationNumber='" + registrationNumber + '\'' +
-                ", make='" + make + '\'' +
-                ", model='" + model + '\'' +
-                ", numberOfDoors=" + numberOfDoors +
+        return "DieselCar   |" +
+                "Particle Filter = " + hasParticleFilter() +
+                ", kmPrLitre = " + kmPrLitre +
+                ", registration number = " + registrationNumber + '\'' +
+                ", make = " + make + '\'' +
+                ", model = " + model + '\'' +
+                ", doors = " + numberOfDoors +
                 ", fuel type = "+ getFuelType()+
-                '}';
+                '|';
     }
 }
